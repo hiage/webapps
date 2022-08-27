@@ -7,12 +7,15 @@ ENV GO111MODULE=on
 ENV GOFLAGS=-mod=vendor
 
 RUN mkdir -p /app
-COPY . /app
+COPY ./backend/* /app
+
 WORKDIR /app
+
 RUN go mod init main
 RUN go mod tidy
 RUN go mod vendor
 RUN go mod verify
+
 RUN go build -o main main.go
 RUN rm -rf /var/cache/apk/*
 

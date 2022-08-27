@@ -9,7 +9,7 @@ ENV TZ=Asia/Jakarta
 RUN rm -rf /var/cache/apk/*
 
 RUN mkdir -p /app
-COPY . /app
+COPY ./frontend/* /app
 WORKDIR /app
 RUN pip install -r requirements.txt
 

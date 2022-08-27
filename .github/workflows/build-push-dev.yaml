@@ -22,7 +22,7 @@ jobs:
       name: Build and push
       uses: docker/build-push-action@v3
       with:
-        file: ./backend/Dockerfile
+        file: ./backend/github.Dockerfile
         push: true
         #saat ini hanya untuk testing saja, dijadikan multiple tag.
         tags: ${{ secrets.DOCKERHUB_USERNAME }}/backend:development, ${{ secrets.DOCKERHUB_USERNAME }}/backend:staging, ${{ secrets.DOCKERHUB_USERNAME }}/backend:production
@@ -31,7 +31,7 @@ jobs:
       name: Build and push
       uses: docker/build-push-action@v3
       with:
-        file: ./frontend/Dockerfile
+        file: ./frontend/github.Dockerfile
         push: true
         #saat ini hanya untuk testing saja, dijadikan multiple tag.
         tags: ${{ secrets.DOCKERHUB_USERNAME }}/frontend:development, ${{ secrets.DOCKERHUB_USERNAME }}/frontend:staging, ${{ secrets.DOCKERHUB_USERNAME }}/frontend:production
