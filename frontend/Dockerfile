@@ -8,7 +8,7 @@ RUN apk fix && \
 ENV TZ=Asia/Jakarta
 RUN rm -rf /var/cache/apk/*
 RUN pwd && ls -lh
-COPY ./frontend/* /app
+COPY . /app
 WORKDIR /app
 RUN pwd && ls -lh
 RUN pip install -r requirements.txt

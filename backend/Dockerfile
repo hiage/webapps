@@ -7,6 +7,7 @@ ENV GO111MODULE=on
 ENV GOFLAGS=-mod=vendor
 RUN pwd && ls -lh
 RUN mkdir -p /app
+RUN pwd && ls -lh /app
 COPY ./backend/* /app
 RUN pwd && ls -lh
 WORKDIR /app
