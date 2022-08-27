@@ -10,6 +10,7 @@ RUN mkdir -p /app
 COPY ./backend/* /app
 RUN pwd && ls -lh
 WORKDIR /app
+RUN pwd && ls -lh
 RUN go mod init main
 RUN go mod tidy
 RUN go mod vendor
