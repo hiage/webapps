@@ -1,4 +1,4 @@
-FROM golang:1.17.11-alpine as builder
+FROM golang:1.16-alpine as builder
 
 RUN apk update && apk upgrade && \
     apk --no-cache --update add git make && \
@@ -6,8 +6,6 @@ RUN apk update && apk upgrade && \
 
 WORKDIR /
 COPY . .
-RUN go mod init main
-RUN go mod tidy
 RUN go build -o main main.go
 RUN rm -rf /var/cache/apk/*
 
