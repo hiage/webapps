@@ -30,4 +30,4 @@ RUN mkdir -p /app
 WORKDIR /app
 EXPOSE 8080
 COPY --from=builder /app/main /app/
-CMD ["/app/main"]
+CMD /app/main
