@@ -1,4 +1,4 @@
-name: build and push development
+name: build and push staging
 #on: [push] # When pushing to any branch then run this action
 on:
   push:
@@ -6,10 +6,11 @@ on:
          #- development
           - staging
          #- production
+
 jobs:
-  dev-build-push:  # job name
+  build-push-staging:  # job name
     runs-on: ubuntu-latest  # runner name : (ubuntu latest version)
-    environment: demo-workflow
+    environment: ENV_WEBAPPS
     steps:
     - uses: actions/checkout@v2 # first action : checkout source code
     - name: Login to DockerHub
