@@ -15,6 +15,7 @@ fullnameOverride: ""
 autoscaling:
   minReplicas: 2
   maxReplicas: 10
+  targetCPU: 10
 
 ports:
   containerPort: 3000
