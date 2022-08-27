@@ -5,9 +5,9 @@ RUN apk update && apk upgrade && \
 
 ENV GO111MODULE=on
 ENV GOFLAGS=-mod=vendor
-
-WORKDIR /
-COPY . .
+RUN mkdir -p /app
+WORKDIR /app
+COPY ../main.go /app
 RUN go mod init main
 RUN go mod tidy
 RUN go mod vendor
@@ -25,8 +25,8 @@ RUN apk fix && \
 ENV TZ=Asia/Jakarta
 
 RUN rm -rf /var/cache/apk/*
-
-WORKDIR /
+RUN mkdir -p /app
+WORKDIR /app
 EXPOSE 8080
-COPY --from=builder /main /
-CMD ["./main"]
+COPY --from=builder /app/main /app/
+CMD ["./app/main"]
