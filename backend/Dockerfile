@@ -1,13 +1,20 @@
-FROM golang:1.14-alpine as builder
+FROM golang:1.18-alpine as builder
 
 RUN apk update && apk upgrade && \
-    apk --no-cache --update add git make && \
-    go get github.com/gorilla/mux
+    apk --no-cache --update add git make 
 
-WORKDIR /
-COPY . .
+ENV GO111MODULE=on
+ENV GOFLAGS=-mod=vendor
+RUN pwd && ls -lh
+RUN mkdir -p /app
+COPY . /app
+RUN pwd && ls -lh
+WORKDIR /app
 RUN go mod init main
 RUN go mod tidy
+RUN go mod vendor
+RUN go mod verify
+RUN pwd && ls -lh
 RUN go build -o main main.go
 RUN rm -rf /var/cache/apk/*
 
@@ -24,5 +31,5 @@ RUN rm -rf /var/cache/apk/*
 RUN mkdir -p /app
 WORKDIR /app
 EXPOSE 8080
-COPY --from=builder /main /app/
+COPY --from=builder /app/main /app/
 CMD ["./app/main"]
