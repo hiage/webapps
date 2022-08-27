@@ -7,7 +7,7 @@ ENV GO111MODULE=on
 ENV GOFLAGS=-mod=vendor
 RUN mkdir -p /app
 WORKDIR /app
-COPY ../main.go /app
+COPY . /app
 RUN go mod init main
 RUN go mod tidy
 RUN go mod vendor
