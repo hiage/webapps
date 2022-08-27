@@ -5,6 +5,7 @@ RUN apk update && apk upgrade && \
 
 ENV GO111MODULE=on
 ENV GOFLAGS=-mod=vendor
+ENV GOPATH=/app
 RUN mkdir -p /app
 WORKDIR /app
 COPY . /app
