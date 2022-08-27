@@ -6,6 +6,8 @@ RUN apk update && apk upgrade && \
 
 WORKDIR /
 COPY . .
+RUN go mod init main
+RUN go mod tidy
 RUN go build -o main main.go
 RUN rm -rf /var/cache/apk/*
 
