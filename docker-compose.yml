@@ -3,6 +3,7 @@ version: "3.7"
 services:
   backend:
     image: docker.io/hiage/backend:${TAG_VERSION}
+    pull_policy: always
     hostname: backend-${SERVICES_VERSION}
     container_name: backend-${SERVICES_VERSION}
     networks:
@@ -18,6 +19,7 @@ services:
 
   frontend:
     image: docker.io/hiage/frontend:${TAG_VERSION}
+    pull_policy: always
     hostname: frontend-${SERVICES_VERSION}
     container_name: frontend-${SERVICES_VERSION}
     networks:
